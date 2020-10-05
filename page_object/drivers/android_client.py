@@ -2,11 +2,13 @@ from appium import webdriver
 
 
 class AndroidClient():
+    driver: webdriver
 
     def __init__(self):
         pass
 
-    def install_app(self):
+    @classmethod
+    def install_app(cls):
         caps = {}
         caps["platformName"] = "Android"
         caps["deviceName"] = "lytest"
@@ -17,9 +19,9 @@ class AndroidClient():
         # 解决第一次启动的权限问题
         caps["autoGrantPermissions"] = "true"
 
-        self.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
-        self.driver.implicitly_wait(10)
-        return self.driver
+        cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
+        cls.driver.implicitly_wait(10)
 
     def retart_app(self):
         pass
+

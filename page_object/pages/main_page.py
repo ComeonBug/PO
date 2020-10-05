@@ -1,15 +1,14 @@
 # 第一步MainPage
-from page_object.drivers.android_client import install_app
+from selenium.webdriver.common.by import By
+from page_object.pages.base_page import BasePage
 from page_object.pages.selected_page import SelectedPage
 
 
-class MainPage():
-    def __init__(self):
-        pass
+class MainPage(BasePage):
     # 第二步，选了一个要测试的页面
     def gotoSelect(self):
         # 返回一个page对象
-        install_app().find_element_by_xpath("//*[@text='行情']").click()
-        # self.driver.find_element_by_xpath("//*[@text='自选']")
-
+        hangqing = (By.XPATH, "//*[@text='行情']")
+        self.find(hangqing).click()
+        # self.driver.find_element_by_xpath("//*[@text='行情']").click()
         return SelectedPage()

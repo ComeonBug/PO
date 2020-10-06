@@ -11,4 +11,9 @@ class TestSelected():
         assert App.main().gotoSelect().getPriceByName("中芯国际") == 17.40
 
     def test_add_stock(self):
-        pass
+        search_page = App.main().gotoSearch().search("阿里巴巴")
+        assert search_page.is_selected("BABA") == True
+        assert search_page.is_selected("09988") == False
+
+    def teardown_class(self):
+        App.main().driver.quit()

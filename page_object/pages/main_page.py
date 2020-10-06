@@ -1,6 +1,7 @@
 # 第一步MainPage
 from selenium.webdriver.common.by import By
 from page_object.pages.base_page import BasePage
+from page_object.pages.search_page import SearchPage
 from page_object.pages.selected_page import SelectedPage
 
 
@@ -13,3 +14,8 @@ class MainPage(BasePage):
         self.find(hangqing).click()
         # self.driver.find_element_by_xpath("//*[@text='行情']").click()
         return SelectedPage()
+
+    def gotoSearch(self):
+        searchbutton = (By.ID, "home_search")
+        self.find(searchbutton).click()
+        return SearchPage()

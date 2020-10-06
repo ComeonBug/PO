@@ -15,7 +15,7 @@ class MainPage(BasePage):
         # self.driver.find_element_by_xpath("//*[@text='行情']").click()
         return SelectedPage()
 
-    def gotoSearch(self):
+    def gotoSearch(self) -> SearchPage:
         searchbutton = (By.ID, "home_search")
         self.find(searchbutton).click()
         return SearchPage()

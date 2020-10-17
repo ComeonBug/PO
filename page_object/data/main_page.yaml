@@ -1,0 +1,4 @@
+gotoProfile:
+  - locator: "//*[contains(@resource-id,'tab_name') and @text='我的']"
+    by: xpath
+    action: click

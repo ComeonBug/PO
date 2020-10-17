@@ -1,3 +1,5 @@
+import time
+
 from appium import webdriver
 
 
@@ -21,6 +23,8 @@ class AndroidClient():
 
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         cls.driver.implicitly_wait(10)
+        cls.driver.find_element_by_id('tv_agree').click()
+        time.sleep(5)
 
 
     def retart_app(self):

@@ -56,3 +56,4 @@ class TestSelected():
 
     def teardown_class(self):
         self.main_page.driver.quit()
+

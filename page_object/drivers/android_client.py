@@ -22,6 +22,7 @@ class AndroidClient():
         cls.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
         cls.driver.implicitly_wait(10)
 
+
     def retart_app(self):
         pass
 

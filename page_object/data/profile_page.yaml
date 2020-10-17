@@ -1,0 +1,4 @@
+gotologin:
+  - by: xpath
+    locator: "//*[contains(@text,'登录')]"
+    action: click

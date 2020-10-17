@@ -8,5 +8,6 @@ class ProfilePage(BasePage):
     _goto_login_button = (By.XPATH, "//*[contains(@text,'登录')]")
 
     def gotologin(self) -> LoginPage:
-        self.find(self._goto_login_button).click()
+        # self.find(self._goto_login_button).click()
+        self.load_step('../data/profile_page.yaml', 'gotologin')
         return LoginPage()

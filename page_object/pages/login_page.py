@@ -22,10 +22,14 @@ class LoginPage(BasePage):
     def login_by_QQ(self):
         pass
 
-    def login_error_by_userinfo(self, username, password):
+    def login_error_by_userinfo_old(self, username, password):
         self.find(self._login_account).send_keys(username)
         self.find(self._login_password).send_keys(password)
         self.find(self._login_button).click()
+        return self
+
+    def login_error_by_userinfo(self, username, password):
+        self.load_step('../data/login_page.yaml','LoginByPassword',var1 = username, var2=password)
         return self
 
     def login_error_by_password(self):

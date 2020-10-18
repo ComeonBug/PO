@@ -2,7 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 
-from page_object.drivers.android_client import AndroidClient
+from page_object.drivers.client import AndroidClient
 from page_object.pages.base_page import BasePage
 
 

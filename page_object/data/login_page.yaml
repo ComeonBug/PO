@@ -1,12 +1,23 @@
 LoginByPassword:
-  - locator: login_account
-    by: id
+  - element: login_account
     action: send_keys
     text: $var1
-  - locator: login_password
-    by: id
+  - element: login_password
     action: send_keys
     text: $var2
   - locator: button_next
     by: id
     action: click
+
+elements:
+  login_account:
+    android:
+      by: id
+      locator: login_account
+    ios:
+      by: id
+      locator: XXXXX
+  login_password:
+    android:
+      by: id
+      locator: login_password

@@ -1,4 +1,4 @@
-from page_object.drivers.android_client import AndroidClient
+from page_object.drivers.client import AndroidClient
 from page_object.pages.base_page import BasePage
 from page_object.pages.main_page import MainPage
 

@@ -3,12 +3,16 @@ from appium.webdriver import WebElement
 from selenium.webdriver.common.by import By
 import yaml
 
-from page_object.drivers.android_client import AndroidClient
+from page_object.drivers.client import AndroidClient
 
 
 class BasePage():
-    # driver: webdriver
-    #
+    driver: webdriver
+    # 黑名单参数
+    element_black = [
+        ('id','xxxx')
+    ]
+
     def __init__(self):
         self.driver = self.get_driver()
 
@@ -31,6 +35,7 @@ class BasePage():
         print("*"*20)
         return self.driver.find_element(*kv)
 
+
     def findByText(self, text) -> WebElement:
         return self.find((By.XPATH, "//*[@text='{}']".format(text)))
 
@@ -41,8 +46,18 @@ class BasePage():
         print(kwargs.items())
         print("*"*20)
         po_method = po_data[key]
+        if po_data.keys().__contains__('elements'):
+            po_elements = po_data['elements']
+
         for step in po_method:
-            element: WebElement = self.driver.find_element(by=step['by'], value=step['locator'])
+            step: dict
+            element_platform_data: dict
+            if step.keys().__contains__('element'):
+                element_platform_data = po_elements[step['element']][AndroidClient.platform]
+            else:
+                element_platform_data = {"by": step['by'], "locator": step['locator']}
+
+            element: WebElement = self.driver.find_element(by=element_platform_data['by'], value=element_platform_data['locator'])
             action = str(step['action']).lower()
             # todo :由于弹框定位失败，try-catch来处理
             if action == 'click':
